@@ -1,15 +1,13 @@
-vowels = {'a','e','i','o','u'}
-count = 1 
+vowels = {'a','e','i','o','u'} 
 def number_world(number): # number of string
     s = input() # input of the string
-    if len(s) == n:
-        print('They are equal')
-        for i in s:
-            if i in vowels and s.index(i) > 0:
-
-                print('Yeah, this vowels:',i)
-    else:
-        print('They are not equal')
+    count = 0
+    #print('They are equal')
+    for i in range(n):
+        if i!=n-1:
+            if s[i] not in vowels and s[i+1] in vowels:
+                count +=1
+    print(count)
 
 t = int(input()) # number of testcases
 while t >0:
