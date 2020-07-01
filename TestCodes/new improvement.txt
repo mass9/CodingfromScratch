@@ -1,0 +1,6 @@
+import sys
+input() => sys.stdin.readline()
+#taking two inputs
+cad , rad = map(int, sys.stdin.readline().split())
+taking multiple inputs
+d = [list(sys.stdin.readline().split()) for _ in range(rad + 1)]
