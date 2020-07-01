@@ -8,8 +8,11 @@ def decimalToBinary(n):
         i = i*2
         if (n//i >= i/2):
             ans = n-(n//i)
+            print('i:',i)
+            print('ans:',ans)
         else:
             ans = (n-(i//2)) +1
+            print('ans: ',ans)
     print(ans)
 
 # Naive approach
