@@ -1,30 +1,44 @@
-"""
-S = Distance  between A and B in km
-X = km atmost in one day
-N = exception days
-T = on a given day
-Y = travel distance on the given day
-"""
+import math
 
-s,x,n = [int(x) for x in input().split()]
-count , ti, yi = 0,0,0 
-b = []
-for _ in range(n):
-    t = [int(i) for i in input().split()]
-    b.append(t)
-b.sort()
-while s > 0:
-    # t , y = [int(x) for x in input().split()]
-    s = s - x
-    count +=1
-    ti +=1
-    yi +=1
-    print('yi: ',yi)
-    print('ti: ',ti)
-    bl = len(b)
-
-    if ti == b[0][0]:
-        print('Exception of the day')
+def city(a,b,l):
+    p = 0
+    q = 0
+    day = 1
+    while(p<a):
+        if q<len(l) and day!=l[q][0]: # if exception day is not in sequece
+            if int(math.ceil((a-p)/b)) > l[q][0] -day:  
+                s = l[q][0] - day
+                print('s1:',s)
+                p = p + b*s
+                print('p1:',p)
+                if p >=a:
+                    return day
+                else:
+                    day = l[q][0]
+                    print('day2:',day)
+            else:
+                day = day + (int(math.ceil((a-p)/b)) -1)
+                p = a
+            
+        elif q<len(l) and day == l[q][0]: # excecption day
+            p = p + l[q][1]
+            if p >= a:
+                return day
+            else:
+                day +=1
+                q +=1
         
-print(count)
-print(b)
+        else:
+            s = a-p
+            day = day + int(math.ceil((a-p)/b)) -1
+            p = a
+        
+    return day
+n = list(map(int,input().split()))
+l = []
+for i in range(n[2]):
+    a = list(map(int,input().split()))
+    l = l+[[a[0],a[1]]]
+    l.sort()
+
+print(city(n[0],n[1],l))
