@@ -1,1 +1,2 @@
 string:find
+c++ tolower()
